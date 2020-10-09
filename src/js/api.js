@@ -12,32 +12,18 @@ const getCountries = async () => {
 
 const paintCountries = async () => {
   const data = await getCountries();
-  let fragment = document.createDocumentFragment();
-  data.forEach(item => {
-    const section = document.createElement('section');
-    section.classList.add('country');
-    fragment.appendChild(section);
-    const flag = document.createElement('img');
-    flag.src = item.flag;
-    fragment.appendChild(flag);
-    const title = document.createElement('h2');
-    title.classList.add('country__title');
-    title.textContent = item.name;
-    fragment.appendChild(title);
-    const population = document.createElement('p');
-    population.classList.add('country__data');
-    population.textContent = `Population:${item.population}`;
-    fragment.appendChild(population);
-    const region = document.createElement('p');
-    region.classList.add('country__data');
-    region.textContent = `Region: ${item.region}`;
-    fragment.appendChild(region);
-    const capital = document.createElement('p');
-    capital.classList.add('country__data');
-    capital.textContent = `Capital: ${item.capital}`;
-    fragment.appendChild(capital);
+  const fragment = document.createDocumentFragment();
+  const template=document.getElementById('country-template').content
+  data.forEach((item) => {
+    template.querySelector('.country__flag').src=item.flag
+    template.querySelector('.country__title').textContent=item.name
+    template.querySelector('.country__population').textContent=item.population
+    template.querySelector('.country__region').textContent=item.region
+    template.querySelector('.country__capital').textContent=item.capital
+    const clone = document.importNode(template, true);
+    fragment.appendChild(clone);
   });
-  countries.appendChild(fragment);
+  countries.appendChild(fragment)
 };
 
 document.addEventListener('DOMContentLoaded', () => {
