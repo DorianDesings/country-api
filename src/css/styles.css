@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  padding: 0 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 31px 16px 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__input {
+  height: 75px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4rem;
+  padding: 0 4rem;
+  background-image: url('https://www.flaticon.es/svg/static/icons/svg/660/660029.svg');
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}

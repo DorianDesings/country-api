@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+   initial-scale=1.0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Yo también odio a Dorian!</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <h1>Where in the world</h1>
+        <button>Dark mode</button>
+      </nav>
+      <form id="form" class="form">
+        <div class="form__field">
+          <i>icono</i>
+          <input
+            id="search"
+            class="form__input"
+            type="search"
+            name="search"
+            placeholder="Search for a country"
+          />
+        </div>
+        <select name="region" id="region">
+          <option value="africa">Africa</option>
+          <option value="america">America</option>
+          <option value="asia">Asia</option>
+          <option value="europe">Europe</option>
+          <option value="oceania">Oceania</option>
+        </select>
+      </form>
+    </header>
+    <main>
+      <article id="countries" class="countries"></article>
+    </main>
+
+    <script src="js/api.js"></script>
+  </body>
+</html>
