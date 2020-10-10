@@ -1,7 +1,7 @@
 const countries = document.getElementById('countries');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
-const modal = document.getElementById('modal');
+const details = document.getElementById('details');
 
 const getCountries = async (userUrl = '') => {
   const url = userUrl || 'https://restcountries.eu/rest/v2/all';
@@ -11,7 +11,6 @@ const getCountries = async (userUrl = '') => {
     return data;
   } catch (err) {
     console.log('Error', err);
-    // getCountries('https://restcountries.eu/rest/v2/all');
   }
 };
 
@@ -63,66 +62,6 @@ const readUserChanges = (data, event) => {
   }
 };
 
-const getCountryInfo = async country => {
-  try {
-    const countryInfo = await getCountries(
-      `https://restcountries.eu/rest/v2/name/${country}`
-    );
-    console.log(countryInfo);
-    modal.innerHTML = `
-    <div class="modal__header">X</div>
-        <img src=${countryInfo[0].flag} alt="" />
-        <div class="modal__info">
-          <h2 class="modal__title">${countryInfo[0].name}</h2>
-          <p class="modal__data">
-            <span class="modal__bold">Native Name</span>
-            ${countryInfo[0].nativeName}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Population</span>
-            ${countryInfo[0].population}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Region</span>
-            ${countryInfo[0].region}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Sub Region</span>
-            ${countryInfo[0].subregion}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Capital</span>
-            ${countryInfo[0].capital}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Top Level Domain</span>
-            ${countryInfo[0].topLevelDomain}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Currencies</span>
-            ${countryInfo[0].currencies[0].name}
-          </p>
-          <p class="modal__data">
-            <span class="modal__bold">Languages</span>
-            ${countryInfo[0].languages[0].name}
-          </p>
-          <h3 class="modal__border-countries">Border Countries</h3>
-          <div class="modal__countries-buttons">
-            <button class="modal__button"></button>
-            <button class="modal__button"></button>
-            <button class="modal__button"></button>
-          </div>
-        </div>
-    `;
-    modal.classList.add('modal--show');
-  } catch (err) {
-    console.log('Error', err);
-    // getCountries('https://restcountries.eu/rest/v2/all');
-  }
-
-  console.log(country);
-};
-
 countries.addEventListener('click', e => {
   let element = '';
   if (e.target.parentElement.classList.contains('country')) {
@@ -133,7 +72,7 @@ countries.addEventListener('click', e => {
     element = e.target.parentElement.parentElement.parentElement;
   }
   // console.log(element);
-  getCountryInfo(element.dataset.country);
+  location.href = `/src/country.html#${element.dataset.country}`;
   // modal.classList.toggle('modal--show');
 });
 
